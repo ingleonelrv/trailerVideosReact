@@ -1,6 +1,7 @@
 import React from 'react'
 import {render} from 'react-dom'
-import Media from './src/playlist/components/media' //Importo el componente
+import Playlist from './src/playlist/components/playlist' //Importo el componente
+import data from './src/api.json' 
 
 const container = document.getElementById('container')
-render(<Media type = 'video' title = 'Que es responsive design?' author='Leonel Rodriguez' image='./images/covers/responsive.jpg' />, container); // Lo muestro en el navegador como un tag
+render(<Playlist data={data} />, container); // Lo muestro en el navegador como un tag

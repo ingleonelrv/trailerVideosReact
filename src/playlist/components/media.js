@@ -33,9 +33,9 @@ class Media extends Component{
             //AQUI va el codigo JSX que no es mas que html
             <div className='Media' onClick={this.handleClick}>
                 <div className='Media-cover'>
-                    <img className='Media-image' src={this.props.image} alt='' width={260} height={160} />
+                    <img className='Media-image' src={this.props.cover} alt='' width={260} height={160} />
                     <h3 className='Media-title'>{this.props.title}</h3>
-                    <p className='Media-author'>{this.state.author}</p>
+                    <p className='Media-author'>{this.props.author}</p>
                 </div>                
             </div>
         )
@@ -44,7 +44,7 @@ class Media extends Component{
 // Media.defaultProps = {}
 Media.propTypes = { //en minuscula porque es un atributo de Component
     //Aqui validamos que el tipo sea el esperado, si llega otro tipo saltara un Warning
-    image : PropTypes.string,
+    cover : PropTypes.string,
     title : PropTypes.string.isRequired, //Para que sea obligatorio que venga
     author : PropTypes.string,
     type: PropTypes.oneOf(['video','audio']) //da warning si recibe otra cosa
