@@ -3,6 +3,16 @@ import './media.css'
 import PropTypes from 'prop-types'
 
 class Media extends Component{
+    //ES6
+    // constructor(props){
+    //     super(props)
+    //     this.handleClick = this.handleClick.bind(this)
+    // }
+
+    //ES7 arrow function no hay necesidad de bind(this)
+    handleClick=(event)=>{
+        console.log(this.props.title)
+    }
     render(){
         const styles = { //objeto json
             container:{ //key
@@ -15,7 +25,7 @@ class Media extends Component{
         let { title, author, image } = this.props;
         return(
             //AQUI va el codigo JSX que no es mas que html
-            <div className='Media'>
+            <div className='Media' onClick={this.handleClick}>
                 <div className='Media-cover'>
                     <img className='Media-image' src={image} alt='' width={260} height={160} />
                     <h3 className='Media-title'>{title}</h3>
