@@ -6,12 +6,19 @@ class Media extends Component{
     //ES6
     // constructor(props){
     //     super(props)
-    //     this.handleClick = this.handleClick.bind(this)
+    //     this.state = {
+    //         author: props.author
+    //     }
     // }
 
     //ES7 arrow function no hay necesidad de bind(this)
+    state={
+        author: this.props.author 
+    }
     handleClick=(event)=>{
-        console.log(this.props.title)
+        this.setState({
+            author: 'Manuel Alonso'
+        })
     }
     render(){
         const styles = { //objeto json
@@ -22,19 +29,19 @@ class Media extends Component{
                 border: '1px solid red'
             }
         }
-        let { title, author, image } = this.props;
         return(
             //AQUI va el codigo JSX que no es mas que html
             <div className='Media' onClick={this.handleClick}>
                 <div className='Media-cover'>
-                    <img className='Media-image' src={image} alt='' width={260} height={160} />
-                    <h3 className='Media-title'>{title}</h3>
-                    <p className='Media-author'>{author}</p>
+                    <img className='Media-image' src={this.props.image} alt='' width={260} height={160} />
+                    <h3 className='Media-title'>{this.props.title}</h3>
+                    <p className='Media-author'>{this.state.author}</p>
                 </div>                
             </div>
         )
     }
 }
+// Media.defaultProps = {}
 Media.propTypes = { //en minuscula porque es un atributo de Component
     //Aqui validamos que el tipo sea el esperado, si llega otro tipo saltara un Warning
     image : PropTypes.string,
