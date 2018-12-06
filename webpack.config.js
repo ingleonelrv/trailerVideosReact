@@ -8,7 +8,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const config = {  
     entry: {
-        "platzi-video": path.resolve(__dirname, 'index.js'),
+        home: path.resolve(__dirname, 'src/entries/home.js'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
