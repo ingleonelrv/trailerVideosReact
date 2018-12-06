@@ -2,14 +2,41 @@ import React, {Component} from 'react'
 import HomeLayout from '../component/home-layout'
 import Categories from '../../categories/components/categories';
 import Related from '../component/related'
+import ModalContainer from '../../widgets/containers/modal-container'
+import Modal from '../../widgets/components/modal'
+import HandleError from '../../error/containers/handle-error'
 
 class Home extends Component{
+    state={
+        modalVisible: false,
+    }
+    handleOpenModal = (event)=>{
+        this.setState({
+            modalVisible : true
+        })
+    }
+    handleCloseModal = (event) =>{
+        this.setState({
+            modalVisible : false
+        })
+    }
     render(){
         return(
-            <HomeLayout>
-                <Related />
-                <Categories categories={this.props.data.categories} />
-            </HomeLayout>
+            <HandleError>
+                <HomeLayout>
+                    <Related />
+                    <Categories categories={this.props.data.categories} handleOpenModal={this.handleOpenModal} />
+                    {
+                        // Operador ternario: if true mostrar sino entonces no render(ocultar), para else ? (&&) y : al final
+                        this.state.modalVisible &&
+                        <ModalContainer>
+                            <Modal handleClick={this.handleCloseModal}>
+                                <h1>Esto es un modal</h1>
+                            </Modal>
+                        </ModalContainer>
+                    }
+                </HomeLayout>
+            </HandleError>
         )
     }
 }

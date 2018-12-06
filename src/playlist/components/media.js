@@ -12,26 +12,27 @@ class Media extends Component{
     // }
 
     //ES7 arrow function no hay necesidad de bind(this)
-    state={
-        author: this.props.author 
-    }
-    handleClick=(event)=>{
-        this.setState({
-            author: 'Manuel Alonso'
-        })
-    }
+    // state={
+    //     author: this.props.author 
+    // }
+    // este handle lo voy  a manejar como propiedad
+    // handleClick=(event)=>{
+    //     this.setState({
+    //         author: 'Manuel Alonso'
+    //     })
+    // }
     render(){
-        const styles = { //objeto json
-            container:{ //key
-                color: '#44546b',
-                cursor: 'pointer',
-                width: 245,
-                border: '1px solid red'
-            }
-        }
+        // const styles = { //objeto json
+        //     container:{ //key
+        //         color: '#44546b',
+        //         cursor: 'pointer',
+        //         width: 245,
+        //         border: '1px solid red'
+        //     }
+        // }
         return(
             //AQUI va el codigo JSX que no es mas que html
-            <div className='Media' onClick={this.handleClick}>
+            <div className='Media' onClick={this.props.handleClick}>
                 <div className='Media-cover'>
                     <img className='Media-image' src={this.props.cover} alt='' width={260} height={160} />
                     <h3 className='Media-title'>{this.props.title}</h3>

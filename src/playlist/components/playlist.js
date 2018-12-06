@@ -8,7 +8,7 @@ function Playlist(props){
             {//DEBEN estar las llaves para poder escribir codigo js
                 props.playlist.map((item)=>{
                     //si no pongo el return no se imprime, el return es para hacer push a la playlist
-                    return <Media {...item} key={item.id} /> 
+                    return <Media {...item} key={item.id} handleClick={props.handleOpenModal} /> 
                 })
             }
         </div>
