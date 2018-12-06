@@ -3,8 +3,15 @@ import './search.css'
 
 function Search(props){
     return(
-        <form className='Search'>
-            <input className='Search-input' type='text' placeholder='Busca tu video favorito'></input>
+        <form className='Search' onSubmit={props.handleSubmit}>
+            <input 
+                ref={props.setRef} 
+                className='Search-input' 
+                type='text' 
+                placeholder='Busca tu video favorito'
+                value={props.value}
+                onChange={props.handleChange}                
+                ></input>
         </form>
     )
 }
