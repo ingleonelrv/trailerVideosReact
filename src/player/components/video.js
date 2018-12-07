@@ -15,14 +15,15 @@ class Video extends Component{
         this.video = element
     }
     render(){
-        const {handleLoadedMetadata} = this.props
+        const {handleLoadedMetadata, handleTimeUpdate} = this.props
         return(
             <div className='video'>
                 <video 
                     autoPlay={this.props.autoPlay}
                     src={this.props.src}
                     ref={this.setRef}
-                    onLoadedMetadata={handleLoadedMetadata} >
+                    onLoadedMetadata={handleLoadedMetadata} 
+                    onTimeUpdate={handleTimeUpdate} >
                 </video>
             </div>
         )
