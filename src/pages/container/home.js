@@ -26,7 +26,7 @@ class Home extends Component{
             <HandleError>
                 <HomeLayout>
                     <Related />
-                    <VideoPlayer />
+                    <VideoPlayer autoplay={false} />
                     <Categories categories={this.props.data.categories} handleOpenModal={this.handleOpenModal} />
                     {
                         // Operador ternario: if true mostrar sino entonces no render(ocultar), para else ? (&&) y : al final
