@@ -1,4 +1,5 @@
 import React from 'react'
+import './video-player-layout.css'
 
 function VideoPlayerLayout(props){
     return(
