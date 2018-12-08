@@ -12,7 +12,7 @@ function handleSubmit(event){
 	const title = data.get('title')
 	console.log(title)
 }
-//initialState puede ser cualquier tipo de coleccion: arry, objeto, mapa, etc
+//initialState puede ser cualquier tipo de coleccion: array,api, objeto, mapa, etc
 const initialState = [
     {
         "title": "Despacito"
@@ -30,3 +30,12 @@ const store = createStore(
     initialState, 
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
+
+const $container = document.getElementById('playlist')
+//lista de elementos
+const playlist = store.getState()
+playlist.forEach(item => {
+    const template = document.createElement('p')
+    template.textContent = item.title
+    $container.appendChild(template)    
+});
