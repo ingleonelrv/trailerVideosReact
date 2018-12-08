@@ -50,11 +50,37 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-const $container = document.getElementById('playlist')
-//lista de elementos
-const playlist = store.getState()
-playlist.forEach(item => {
-    const template = document.createElement('p')
-    template.textContent = item.title
-    $container.appendChild(template)    
-});
+function render(){
+    const $container = document.getElementById('playlist')
+    $container.innerHTML = "";
+    //lista de elementos
+    const playlist = store.getState()
+    playlist.forEach(item => {
+        const template = document.createElement('p')
+        template.textContent = item.title
+        $container.appendChild(template)    
+    });
+}
+render()
+function handleChange(){
+    render()
+}
+
+store.subscribe(handleChange);
+
+//TEMPLATE LITERAL
+// function render() {
+//     const playlist = store.getState();
+//     const template = `
+//       <ul>
+//         ${playlist.map(song => `
+//           <li>${song.title}</li>
+//         `
+//       )}
+//       </ul>
+//     `;
+//     $container.innerHTML = template
+//   }
+//   render();
+  
+//   store.subscribe(render);
