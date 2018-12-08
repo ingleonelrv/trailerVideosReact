@@ -1,3 +1,4 @@
+import {createStore} from 'redux'
 
 const $form = document.getElementById('form');
 $form.addEventListener('submit', handleSubmit);
@@ -11,3 +12,21 @@ function handleSubmit(event){
 	const title = data.get('title')
 	console.log(title)
 }
+//initialState puede ser cualquier tipo de coleccion: arry, objeto, mapa, etc
+const initialState = [
+    {
+        "title": "Despacito"
+    },
+    {
+        "title":"One more time"
+    },
+    {
+        "title":"Echame la culpa"
+    }
+]
+const store = createStore(
+    //la funcion pura reducer recibe un estado y return un estado
+    (state) => state,
+    initialState, 
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
