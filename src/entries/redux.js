@@ -32,9 +32,20 @@ const initialState = [
         "title":"Echame la culpa"
     }
 ]
+
+//la funcion pura reducer recibe un estado y return un estado. La action viene del dispatch
+const reducer = function (state,action){
+    switch (action.type) {
+        case 'ADD_SONG':
+            //...state a mi lista le agrego un nuevo objeto { } que esta en el store.dispatch
+            return [...state, action.payload]
+            break;   
+        default:
+            return state;
+    }
+}
 const store = createStore(
-    //la funcion pura reducer recibe un estado y return un estado
-    (state) => state,
+    reducer,
     initialState, 
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
