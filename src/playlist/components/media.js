@@ -16,11 +16,10 @@ class Media extends Component{
     //     author: this.props.author 
     // }
     // este handle lo voy  a manejar como propiedad
-    // handleClick=(event)=>{
-    //     this.setState({
-    //         author: 'Manuel Alonso'
-    //     })
-    // }
+    handleClick=(event)=>{
+        //LE ESTOY ENVIANDO A MI MANEJADOR EL MEDIA
+        this.props.openModal(this.props)
+    }
     render(){
         // const styles = { //objeto json
         //     container:{ //key
@@ -32,7 +31,8 @@ class Media extends Component{
         // }
         return(
             //AQUI va el codigo JSX que no es mas que html
-            <div className='Media' onClick={this.props.handleClick}>
+            //Ahora manejare el handleClick local
+            <div className='Media' onClick={this.handleClick}>
                 <div className='Media-cover'>
                     <img className='Media-image' src={this.props.cover} alt='' width={260} height={160} />
                     <h3 className='Media-title'>{this.props.title}</h3>

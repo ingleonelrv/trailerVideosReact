@@ -11,12 +11,13 @@ class Home extends Component{
     state={
         modalVisible: false,
     }
-    handleOpenModal = (event)=>{
+    handleOpenModal = (media)=>{
         this.setState({
-            modalVisible : true
+            modalVisible : true,
+            media
         })
     }
-    handleCloseModal = (event) =>{
+    handleCloseModal = () =>{
         this.setState({
             modalVisible : false
         })
@@ -26,14 +27,13 @@ class Home extends Component{
             <HandleError>
                 <HomeLayout>
                     <Related />
-                    <VideoPlayer autoplay={false} />
                     <Categories categories={this.props.data.categories} handleOpenModal={this.handleOpenModal} />
                     {
                         // Operador ternario: if true mostrar sino entonces no render(ocultar), para else ? (&&) y : al final
                         this.state.modalVisible &&
                         <ModalContainer>
                             <Modal handleClick={this.handleCloseModal}>
-                                <h1>Esto es un modal</h1>
+                                <VideoPlayer autoplay={true} src={this.state.media.src} title={this.state.media.title} />
                             </Modal>
                         </ModalContainer>
                     }

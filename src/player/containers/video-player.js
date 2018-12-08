@@ -58,6 +58,7 @@ class VideoPlayer extends Component{
         this.video.volume = event.target.value
     }
     handleFullScreen = event =>{
+        //esta API para Chrome, hay que hacerlo para los otros
         if (!document.webkitIsFullScreen) {
             this.player.webkitRequestFullScreen()
         } else {
@@ -70,7 +71,7 @@ class VideoPlayer extends Component{
     render(){
         return(
             <VideoPlayerLayout setRef={this.setRef}>
-                <Title title='Titulo del video' />                
+                <Title title={this.props.title} />                
                 <Video 
                     pause={this.state.pause}
                     handleLoadedMetadata = {this.handleLoadedMetadata}
@@ -78,7 +79,7 @@ class VideoPlayer extends Component{
                     handleSeeked={this.handleSeeked}
                     handleSeeking={this.handleSeeking}
                     autoPlay={this.props.autoplay} 
-                    src='http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4' />
+                    src={this.props.src} />
                 <Controls>
                     <PlayPause pause={this.state.pause} handleClick={this.togglePlay} />
                     <Timer currentTime={this.state.currentTime} duration={this.state.duration} />
