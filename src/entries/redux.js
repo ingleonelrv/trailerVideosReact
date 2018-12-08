@@ -10,7 +10,15 @@ function handleSubmit(event){
     const data = new FormData($form)
     //obtiene los datos del elemento del form con name='title'
 	const title = data.get('title')
-	console.log(title)
+    console.log(title)
+    store.dispatch({
+        //el key type siempre debe ir y la accion(que sea) escrita asi de preferencia
+        type: 'ADD_SONG',
+        payload: {
+            //title: title
+            title
+        }
+    })
 }
 //initialState puede ser cualquier tipo de coleccion: array,api, objeto, mapa, etc
 const initialState = [
