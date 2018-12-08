@@ -33,7 +33,7 @@ class Home extends Component{
                         this.state.modalVisible &&
                         <ModalContainer>
                             <Modal handleClick={this.handleCloseModal}>
-                                <VideoPlayer autoplay={true} src={this.state.media.src} title={this.state.media.title} />
+                                <VideoPlayer autoPlay={true} src={this.state.media.src} title={this.state.media.title} />
                             </Modal>
                         </ModalContainer>
                     }

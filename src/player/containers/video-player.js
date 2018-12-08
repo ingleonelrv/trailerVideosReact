@@ -12,14 +12,14 @@ import FullScreen from '../components/full-screen'
 
 class VideoPlayer extends Component{
     state={
-        pause: true,
+        pause: false,
         duration: 0,
         currentTime: 0,
         loading: false
     }
     togglePlay = event => {
         this.setState({
-            pause:!this.state.pause
+            pause: !this.state.pause
         })
     }
     componentDidMount(){
@@ -78,7 +78,7 @@ class VideoPlayer extends Component{
                     handleTimeUpdate={this.handleTimeUpdate}
                     handleSeeked={this.handleSeeked}
                     handleSeeking={this.handleSeeking}
-                    autoPlay={this.props.autoplay} 
+                    autoPlay={this.props.autoPlay} 
                     src={this.props.src} />
                 <Controls>
                     <PlayPause pause={this.state.pause} handleClick={this.togglePlay} />
