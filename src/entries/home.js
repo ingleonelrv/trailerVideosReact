@@ -7,12 +7,15 @@ import {Provider} from 'react-redux'
 import reducer from '../reducers/data'
 import normalizedData from '../schemas/index'
 
+console.log('Datos normalizados ####:')
 console.log(normalizedData)
 
 //Punto importante: Aqui se define el modelo de datos a tener en la app
 const initialState = {
     data: {
-        ...data,
+        // ...data,
+        entities: normalizedData.entities,
+        categories: normalizedData.result.categories
     },
     //la busqueda tiene que ir aparte para no muestre toda la data sino solo lo que interesa
     search:[]
@@ -24,7 +27,7 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-console.log(store.getState());
+// console.log(store.getState());
 
 const container = document.getElementById('home-container')
 render(

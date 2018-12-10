@@ -44,9 +44,12 @@ class Home extends Component{
     }
 }
 function mapsStateToProps(state, props){
+    const categories = state.data.categories.map((catId)=>{ //categories es un array con el id de las categorias
+        return state.data.entities.categories[catId] // retorna un objeto de lo que tiene categories, es decir un array de id de media
+    })
     //el estado en este caso es initialState, props es cualquier prop adicional
     return {
-        categories: state.data.categories,
+        categories: categories,
         search: state.search
     }
 }
