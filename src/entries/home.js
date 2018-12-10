@@ -9,8 +9,10 @@ import reducer from '../reducers/data'
 //Punto importante: Aqui se define el modelo de datos a tener en la app
 const initialState = {
     data: {
-        ...data
-    }
+        ...data,
+    },
+    //la busqueda tiene que ir aparte para no muestre toda la data sino solo lo que interesa
+    search:[]
 }
 
 const store = createStore(

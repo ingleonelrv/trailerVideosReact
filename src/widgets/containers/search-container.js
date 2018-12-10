@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Search from '../components/search'
+import {connect} from 'react-redux'
 
 class SearchContainer extends Component{
     state={
@@ -8,7 +9,13 @@ class SearchContainer extends Component{
     //los eventos mejor manejarlos con arrow function por la cuestion de bindear los contextos
     handleSubmit = (event) =>{
         event.preventDefault(); //para que no recargue la pagina
-        console.log(this.input.value, ' submit')
+        // console.log(this.input.value, ' submit')
+        this.props.dispatch({
+            type: 'SEARCH_VIDEO',
+            payload: {
+                query: this.input.value
+            }
+        })
     }
     setInputRef = element =>{
         this.input = element
@@ -29,4 +36,4 @@ class SearchContainer extends Component{
         )
     }
 }
-export default SearchContainer
+export default connect()(SearchContainer)

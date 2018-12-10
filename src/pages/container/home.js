@@ -28,7 +28,7 @@ class Home extends Component{
             <HandleError>
                 <HomeLayout>
                     <Related />
-                    <Categories categories={this.props.categories} handleOpenModal={this.handleOpenModal} />
+                    <Categories search={this.props.search} categories={this.props.categories} handleOpenModal={this.handleOpenModal} />
                     {
                         // Operador ternario: if true mostrar sino entonces no render(ocultar), para else ? (&&) y : al final
                         this.state.modalVisible &&
@@ -46,7 +46,8 @@ class Home extends Component{
 function mapsStateToProps(state, props){
     //el estado en este caso es initialState, props es cualquier prop adicional
     return {
-        categories: state.data.categories
+        categories: state.data.categories,
+        search: state.search
     }
 }
 export default connect(mapsStateToProps)(Home)
