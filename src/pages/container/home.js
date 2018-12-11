@@ -50,7 +50,7 @@ function mapsStateToProps(state, props){
     //el estado en este caso es initialState, props es cualquier prop adicional
     return {
         categories: categories,
-        search: state.search
+        search: state.data.search
     }
 }
 export default connect(mapsStateToProps)(Home)

@@ -1,4 +1,14 @@
-function data(state, action){
+import normalizedData from '../schemas/index'
+
+const initialState = {
+    //por que he quitado el key data:{}? porque ya estamos exportando una function data(){} y el reducer index se encarga
+    //de darle el key data DENTRO DEL STORE
+    entities: normalizedData.entities,
+    categories: normalizedData.result.categories,
+    search:[],
+}
+
+function data(state = initialState, action){
     switch (action.type) {
         case 'SEARCH_VIDEO':
             //pude haber quitado los [] e igualar todo a results y quitar .push
