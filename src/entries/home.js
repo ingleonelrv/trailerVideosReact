@@ -6,6 +6,7 @@ import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import reducer from '../reducers/index'
 // import normalizedData from '../schemas/index'
+import {Map as map} from 'immutable'
 
 // console.log('Datos normalizados ####:')
 // console.log(normalizedData)
@@ -27,7 +28,7 @@ import reducer from '../reducers/index'
 
 const store = createStore(
     reducer,
-    {},
+    map(),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 

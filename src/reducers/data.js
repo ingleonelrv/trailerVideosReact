@@ -1,12 +1,14 @@
 import normalizedData from '../schemas/index'
+//este metodo nos ayudara a convertir cualquier cosa de JS en algo inmutable
+import {fromJS} from 'immutable'
 
-const initialState = {
+const initialState = fromJS({
     //por que he quitado el key data:{}? porque ya estamos exportando una function data(){} y el reducer index se encarga
     //de darle el key data DENTRO DEL STORE
     entities: normalizedData.entities,
     categories: normalizedData.result.categories,
     search:[],
-}
+})
 
 function data(state = initialState, action){
     switch (action.type) {

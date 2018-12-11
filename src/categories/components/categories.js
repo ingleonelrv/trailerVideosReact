@@ -11,12 +11,14 @@ function Categories(props){
             {/* Entre mi formulario y mis categories muestro los resultados */}
             {
                 props.search.map((item)=>{
-                    return <Media {...item} key={item.id} />
+                    //NO es recomendable usar toJS mejor enviar title={props.get(title)} src=...
+                    //en todo caso lo que hace toJS es convertir un mapa en un objeto plano js
+                    return <Media {...item.toJS()} key={item.get('id')} />
                 })
             }
             {
                 props.categories.map((item)=>{
-                    return <Category key={item.id} {...item} handleOpenModal={props.handleOpenModal} />
+                    return <Category key={item.get('id')} {...item.toJS()} handleOpenModal={props.handleOpenModal} />
                 })
             }
         </div>

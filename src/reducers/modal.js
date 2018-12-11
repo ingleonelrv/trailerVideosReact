@@ -1,3 +1,6 @@
+//este metodo nos ayudara a convertir cualquier cosa de JS en algo inmutable
+import {fromJS} from 'immutable'
+
 const initialState = {
     visibility: false,
     mediaId: null
