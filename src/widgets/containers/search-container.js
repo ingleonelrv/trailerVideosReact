@@ -9,7 +9,7 @@ class SearchContainer extends Component{
     //los eventos mejor manejarlos con arrow function por la cuestion de bindear los contextos
     handleSubmit = (event) =>{
         event.preventDefault(); //para que no recargue la pagina
-        // console.log(this.input.value, ' submit')
+        console.log(this.input.value, ' submit')
         this.props.dispatch({
             type: 'SEARCH_VIDEO',
             payload: {
