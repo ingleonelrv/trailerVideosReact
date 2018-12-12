@@ -10,18 +10,27 @@ import {connect} from 'react-redux'
 import {List as list} from 'immutable'
 
 class Home extends Component{
-    state={
-        modalVisible: false,
-    }
-    handleOpenModal = (media)=>{
-        this.setState({
-            modalVisible : true,
-            media
+    // state={
+    //     modalVisible: false,
+    // }
+    handleOpenModal = (id)=>{
+        this.props.dispatch({
+            type: 'OPEN_MODAL',
+            payload:{
+                mediaId: id
+            }
         })
+        // this.setState({
+        //     modalVisible : true,
+        //     media
+        // })
     }
     handleCloseModal = () =>{
-        this.setState({
-            modalVisible : false
+        // this.setState({
+        //     modalVisible : false
+        // })
+        this.props.dispatch({
+            type: 'CLOSE_MODAL',
         })
     }
     render(){
@@ -32,10 +41,14 @@ class Home extends Component{
                     <Categories search={this.props.search} categories={this.props.categories} handleOpenModal={this.handleOpenModal} />
                     {
                         // Operador ternario: if true mostrar sino entonces no render(ocultar), para else ? (&&) y : al final
-                        this.state.modalVisible &&
+                        //console.log(this.props.modal)
+                        this.props.modal.get('visibility') &&
                         <ModalContainer>
                             <Modal handleClick={this.handleCloseModal}>
-                                <VideoPlayer autoPlay={true} src={this.state.media.src} title={this.state.media.title} />
+                                <VideoPlayer autoPlay={true} 
+                                    //src={this.state.media.src} 
+                                    //title={this.state.media.title}
+                                    id={this.props.modal.get('mediaId')} />
                             </Modal>
                         </ModalContainer>
                     }
@@ -48,6 +61,7 @@ function mapsStateToProps(state, props){
     const categories = state.get('data').get('categories').map((catId)=>{ //categories es un array con el id de las categorias
         return state.get('data').get('entities').get('categories').get(catId) // retorna un objeto de lo que tiene categories, es decir un array de id de media
     })
+    
     //en la logica anterior el resultado era un array pero en immutable los objetos son mapas y los array son listas
     //list() es un metodo importado de immutable para crear listas
     let searchResults = list()
@@ -70,7 +84,8 @@ function mapsStateToProps(state, props){
     //el estado en este caso es initialState, props es cualquier prop adicional
     return {
         categories: categories,
-        search: searchResults
+        search: searchResults,
+        modal: state.get('modal'),
     }
 }
 export default connect(mapsStateToProps)(Home)

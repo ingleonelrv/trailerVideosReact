@@ -18,7 +18,7 @@ class Media extends Component{
     // este handle lo voy  a manejar como propiedad
     handleClick=(event)=>{
         //LE ESTOY ENVIANDO A MI MANEJADOR EL MEDIA
-        this.props.openModal(this.props)
+        this.props.openModal(this.props.id)
     }
     render(){
         // const styles = { //objeto json

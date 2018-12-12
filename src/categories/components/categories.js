@@ -13,7 +13,7 @@ function Categories(props){
                 props.search.map((item)=>{
                     //NO es recomendable usar toJS mejor enviar title={props.get(title)} src=...
                     //en todo caso lo que hace toJS es convertir un mapa en un objeto plano js
-                    return <Media {...item.toJS()} key={item.get('id')} />
+                    return <Media openModal={props.handleOpenModal} {...item.toJS()} key={item.get('id')} />
                 })
             }
             {
