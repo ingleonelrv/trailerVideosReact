@@ -8,6 +8,10 @@ function Categories(props){
     return(
         <div className='categories'>
             <SearchContainer />
+            {
+                props.loading &&
+                <p>Buscando...</p>
+            }
             {/* Entre mi formulario y mis categories muestro los resultados */}
             {
                 props.search.map((item)=>{

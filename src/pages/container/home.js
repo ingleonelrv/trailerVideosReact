@@ -33,7 +33,11 @@ class Home extends Component{
             <HandleError>
                 <HomeLayout>
                     <Related />
-                    <Categories search={this.props.search} categories={this.props.categories} handleOpenModal={this.handleOpenModal} />
+                    <Categories 
+                        search={this.props.search} 
+                        categories={this.props.categories} 
+                        handleOpenModal={this.handleOpenModal}
+                        loading={this.props.loading} />
                     {
                         // Operador ternario: if true mostrar sino entonces no render(ocultar), para else ? (&&) y : al final
                         //console.log(this.props.modal)
@@ -81,6 +85,7 @@ function mapsStateToProps(state, props){
         categories: categories,
         search: searchResults,
         modal: state.get('modal'),
+        loading: state.get('loading').get('active')
     }
 }
 function mapDispatchToProps(dispatch){

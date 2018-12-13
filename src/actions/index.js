@@ -1,3 +1,5 @@
+// import loading from "../reducers/loading";
+
 export function openModal(mediaId) {
     return {
         type: 'OPEN_MODAL',
@@ -29,14 +31,21 @@ export function searchAsyncEntities(query){
         // fetch().then(()=>{}), XMLHttpRequest, etc###
         //despues que se haya hecho la consulta lanzo el dispatch con la accion
         //Ejemplo mas sencillo
+        dispatch(loading(true))
         setTimeout(()=>{
+            dispatch(loading(false))
             dispatch(searchEntities(query))
         },5000)
     }
-    // return{
-    //     type: 'SEARCH_ASYNC_VIDEO',
-    //     payload: {
-    //         query
-    //     }
-    // }
+}
+
+//esta funcion no se llamara directamente de una accion UI como un btn
+//sino cuando se ejecute la accion asincrona dentro de la funcion
+export function loading(value){
+    return {
+        type: 'IS_LOADING',
+        payload:{
+            value
+        }
+    }
 }
