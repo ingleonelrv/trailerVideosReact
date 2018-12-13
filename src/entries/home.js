@@ -5,6 +5,7 @@ import Home from '../pages/container/home'
 import {createStore, applyMiddleware} from 'redux'
 // Logger with default options
 import logger from 'redux-logger'
+import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {Provider} from 'react-redux'
 import reducer from '../reducers/index'
@@ -47,7 +48,7 @@ const store = createStore(
     reducer,
     map(),
     composeWithDevTools(
-        applyMiddleware(logger)
+        applyMiddleware(logger, thunk)
     )
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )

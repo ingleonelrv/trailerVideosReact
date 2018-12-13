@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Search from '../components/search'
 import {connect} from 'react-redux'
-import {searchEntities} from '../../actions/index'
+import {searchEntities, searchAsyncEntities} from '../../actions/index'
 
 class SearchContainer extends Component{
     state={
@@ -11,7 +11,7 @@ class SearchContainer extends Component{
     handleSubmit = (event) =>{
         event.preventDefault(); //para que no recargue la pagina
         // console.log(this.input.value, ' submit')
-        this.props.dispatch(searchEntities(this.input.value))
+        this.props.dispatch(searchAsyncEntities(this.input.value))
     }
     setInputRef = element =>{
         this.input = element
