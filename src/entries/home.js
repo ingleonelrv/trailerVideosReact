@@ -2,7 +2,10 @@ import React from 'react'
 import {render} from 'react-dom'
 import Home from '../pages/container/home'
 // import data from '../api.json'
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
+// Logger with default options
+import logger from 'redux-logger'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import {Provider} from 'react-redux'
 import reducer from '../reducers/index'
 // import normalizedData from '../schemas/index'
@@ -26,10 +29,27 @@ import {Map as map} from 'immutable'
 //     }
 // }
 
+//{ dispatch, getState } descompuesto para no poner store.dispatch y store.getState
+// function logger({ dispatch, getState }){
+//     //arrow function para heredar el contexto y despacha el siguiente middleware
+// 	return ( next ) => {
+//  		return ( action ) => {
+//  			console.log( 'estado anterior:', getState().toJS() )
+//  			console.log( 'enviando acción:', action)
+//  			const rslt = next( action )
+//  			console.log( 'nuevo estado   :', getState().toJS() )
+//  			return rslt
+//  		}
+// 	}
+// }
+
 const store = createStore(
     reducer,
     map(),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeWithDevTools(
+        applyMiddleware(logger)
+    )
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 // console.log(store.getState());
