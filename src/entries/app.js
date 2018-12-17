@@ -1,6 +1,10 @@
 import React, {Fragment} from 'react'
 import {render} from 'react-dom'
-import Home from '../pages/container/home'
+//CAMBIAR NOMBRE AL ARCHIVO FISICO
+import Videos from '../pages/container/home'
+import Home from '../pages/component/home'
+import Contact from '../pages/component/contact'
+import User from '../pages/component/user'
 // import data from '../api.json'
 import {createStore, applyMiddleware} from 'redux'
 // Logger with default options
@@ -11,7 +15,7 @@ import {Provider} from 'react-redux'
 import reducer from '../reducers/index'
 // import normalizedData from '../schemas/index'
 import {Map as map} from 'immutable'
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter, Route} from 'react-router-dom'
 import Header from '../pages/component/header'
 
 
@@ -33,7 +37,11 @@ render(
         <Provider store={store}>
             <Fragment>
                 <Header />
-                <Home />
+                <Route exact path='/' component={Home} />
+                <Route exact path='/videos' component={Videos} />
+                <Route exact path='/contacto' component={Contact} />
+                <Route exact path='/perfil' component={User} />
+                {/* <Home /> */}
             </Fragment>
         </Provider>
     </BrowserRouter>
