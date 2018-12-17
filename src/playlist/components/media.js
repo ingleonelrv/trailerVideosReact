@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import './media.css'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 
 class Media extends Component{
     //ES6
@@ -32,13 +33,19 @@ class Media extends Component{
         return(
             //AQUI va el codigo JSX que no es mas que html
             //Ahora manejare el handleClick local
-            <div className='Media' onClick={this.handleClick}>
-                <div className='Media-cover'>
-                    <img className='Media-image' src={this.props.cover} alt='' width={260} height={160} />
-                </div>                
-                    <h3 className='Media-title'>{this.props.title}</h3>
-                    <p className='Media-author'>{this.props.author}</p>
-            </div>
+            <Link 
+            to={{
+                pathname:'/videos',
+                search:`?id=${this.props.id}`
+            }} >
+                <div className='Media' onClick={this.handleClick}>
+                    <div className='Media-cover'>
+                        <img className='Media-image' src={this.props.cover} alt='' width={260} height={160} />
+                    </div>                
+                        <h3 className='Media-title'>{this.props.title}</h3>
+                        <p className='Media-author'>{this.props.author}</p>
+                </div>         
+            </Link>
         )
     }
 }
