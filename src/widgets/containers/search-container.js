@@ -5,7 +5,8 @@ import {searchEntities, searchAsyncEntities} from '../../actions/index'
 
 class SearchContainer extends Component{
     state={
-        value:'Luis Fonsi'
+        value:'',
+        prompt: false
     }
     //los eventos mejor manejarlos con arrow function por la cuestion de bindear los contextos
     handleSubmit = (event) =>{
@@ -19,12 +20,14 @@ class SearchContainer extends Component{
     handleInputChange = event =>{
         this.setState({
             // value: this.input.value
-            value: event.target.value.replace(' ','-')
+            value: event.target.value.replace(' ','-'),
+            prompt: !!(event.target.value)
         })
     }
     render(){
         return(
-            <Search 
+            <Search
+                prompt={this.state.prompt} 
                 setRef={this.setInputRef} 
                 handleSubmit={this.handleSubmit}
                 handleChange={this.handleInputChange}
