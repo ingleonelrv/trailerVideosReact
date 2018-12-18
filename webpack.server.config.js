@@ -8,7 +8,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const config = {  
     entry: {
-        app: path.resolve(__dirname, 'src/entries/app.js'),
+        app: path.resolve(__dirname, 'src/app.js'),
         // redux: path.resolve(__dirname, 'src/entries/redux.js'),
     },
     output: {

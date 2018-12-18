@@ -3,6 +3,10 @@ const express = require('express')
 //creo una app express
 const app = express()
 //al entrar al server reacciona de esta forma:
+
+const App = require('./app')
+const ReactRouter = require('react-router')
+
 //get('/|*|/videos|/contacto',(request:url, response))
 app.get('*',(req, res)=>{
     console.log(req.url)
