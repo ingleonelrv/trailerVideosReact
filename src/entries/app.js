@@ -42,7 +42,7 @@ render(
                     <Route exact path='/' component={Home} />
                     <Route exact path='/videos' component={Videos} />
                     <Route exact path='/contacto' component={Contact} />
-                    <Route exact path='/perfil' component={User} />
+                    <Route exact path='/perfil' component={NotFound} />
                     <Redirect from='/v' to='/videos' />
                     <Route component={NotFound} />
                 </Switch>
