@@ -15,6 +15,7 @@ import Home from './pages/component/home'
 import Contact from './pages/component/contact'
 import User from './pages/component/user'
 import NotFound from './pages/component/not-found'
+import Video from './pages/component/video'
 
 const store = createStore(
     reducer,
@@ -33,6 +34,7 @@ class App extends Component{
                     <Switch>
                         <Route exact path='/' component={Home} />
                         <Route exact path='/videos' component={Videos} />
+                        <Route exact path="/videos/:id" component={Video} />
                         <Route exact path='/contacto' component={Contact} />
                         <Route exact path='/perfil' component={NotFound} />
                         <Redirect from='/v' to='/videos' />
