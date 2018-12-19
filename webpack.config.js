@@ -13,8 +13,8 @@ const config = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name].[hash].js', // [name] corresponde a cada entry, en este caso invie.hash.js
-        publicPath: path.resolve(__dirname,'dist')+"/", //esta ruta es la que el navegador,webpack, servidor reconocera
+        filename: 'js/[name].js', // [name] corresponde a cada entry, en este caso invie.hash.js
+        publicPath: "/", //esta ruta es la que el navegador,webpack, servidor reconocera
         chunkFilename: 'js/[id].[chunkhash].js' // id 0-n, un codigo hash.js
     },
     devServer: {
@@ -55,7 +55,7 @@ const config = {
                     options: {
                         limit: 10000,
                         fallback: 'file-loader', //si pesan mas entonces uso esto
-                        name: 'images/[name].[hash].[ext]', //configuracion de ruta destino de file-loader
+                        name: 'images/[name].[ext]', //configuracion de ruta destino de file-loader
                     }
                     }
                 ]
@@ -64,7 +64,7 @@ const config = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "./css/[name].[hash].css",
+            filename: "./css/[name].css",
             chunkFilename: "[id].[chunkhash].css"
           })
     ]
