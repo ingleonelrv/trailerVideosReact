@@ -38,6 +38,7 @@ class App extends Component{
                         <Route exact path='/contacto' component={Contact} />
                         <Route exact path='/perfil' component={NotFound} />
                         <Redirect from='/v' to='/videos' />
+                        <Redirect from='/v/:id' to='/videos/:id' />
                         <Route component={NotFound} />
                     </Switch>
                     {/* <Home /> */}
